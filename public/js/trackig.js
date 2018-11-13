@@ -4,24 +4,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     socket.emit('registerUser')
 
     var options = {
-        enableHighAccuracy: true,
         maximumAge: 0
       };
-
-      console.log('in dom content loaded')
-      
       setInterval(()=>{
         navigator.geolocation.getCurrentPosition((pos)=>{
             const { latitude : lat , longitude :lng  }  = pos.coords ; 
             console.log('lat->',lat);
             console.log('long->',lng);
             socket.emit('updateLocationOfUser',{lat,lng});
-        
         },(error)=>{
                 console.log("error--->",error);
           },options)
-      },2000)
-
-     
-      
+      },2500)
 })
