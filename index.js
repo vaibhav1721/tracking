@@ -27,7 +27,7 @@ let {USER} = require('./user');
 
 io.on('connection',(socket)=>{
 
-    socket.on('registerDriver',()=>{
+    socket.on('registerUser',()=>{
 
         let user = new USER() ;
         user.user_id = socket.id ;
@@ -51,7 +51,7 @@ io.on('connection',(socket)=>{
        
     })
 
-    socket.on('updateLocation',(data)=>{
+    socket.on('updateLocationOfUserOfUser',(data)=>{
         let dataToBeupdated = {} ;
         dataToBeupdated.user_id = socket.id ;
         dataToBeupdated.location = {};
@@ -60,10 +60,6 @@ io.on('connection',(socket)=>{
         USER.update({user_id: socket.id},dataToBeupdated,(err,res)=>{
             console.log('result-->',err,res);
         })
-        // if(locationsMap.has(socket.id)){
-        //     locationsMap.set(socket.id,data);
-        //     console.log('data-->',data);
-        // }
     })
 
     socket.on('disconnect',()=>{
@@ -75,5 +71,5 @@ io.on('connection',(socket)=>{
 })
 
 server.listen(3000,()=>{
-    console.log("Server is runnign ar port : 3000");
+    console.log("Server On : 3000");
 })

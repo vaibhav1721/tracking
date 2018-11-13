@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded',()=>{
     let socket = io('/');
 
-    socket.emit('registerDriver')
+    socket.emit('registerUser')
 
     var options = {
         enableHighAccuracy: true,
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             const { latitude : lat , longitude :lng  }  = pos.coords ; 
             console.log('lat->',lat);
             console.log('long->',lng);
-            socket.emit('updateLocation',{lat,lng});
+            socket.emit('updateLocationOfUser',{lat,lng});
         
         },(error)=>{
                 console.log("error--->",error);
